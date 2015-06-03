@@ -1,0 +1,57 @@
+<ion-view view-title="Login" name="login-view" class="login">
+<ion-content class="padding" has-bouncing="true">
+<div class="center">
+<div class="list list-inset bg-border" ng-init="init()">
+	<div class="row">
+		<div class="col head">
+			<h2>
+				<b>KORCHINA</b>
+				<h5>Mobile Trucking Delivery System</h5>
+			</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<label class="item item-input text_in"> <input type="text"
+				placeholder="Username" ng-model="data.username">
+			</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<label class="item item-input text_in"> <input type="password"
+				placeholder="Password" ng-model="data.password">
+			</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-50">
+			<button class="button button-full button-calm responsive-width"
+				ng-click="login()" ng-submit="login()" type="submit">
+				<b translate="SignIN">Sign in</b>
+			</button>
+		</div>
+		<div class="col col-50">
+			<button
+				class="button button-full button-energized responsive-width for"
+				ng-click="forget()">
+				<b translate="ForgotPassword">Forgot Password</b>
+			</button>
+		</div>
+	</div>
+	<div class="row">
+			<div class="col head">
+				<h5>
+					By joining Korchina Courier, you agree to our <a href="#/tnc"><b>Terms
+						of Services</b></a> and Privacy Policy.
+				<h5>
+			</div>
+		</div>
+<!-- 		<h2 class="ng-scope" translate="SignIN">Hello</h2>
+<p class="ng-scope" translate="FOO">This is a paragraph.</p>
+		<button ng-click="changeLanguage('de')">Ch</button> -->
+</div>
+
+</div>
+
+</ion-content> </ion-view>

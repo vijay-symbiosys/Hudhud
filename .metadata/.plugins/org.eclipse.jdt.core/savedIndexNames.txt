@@ -1,0 +1,5 @@
+INDEX VERSION 1.126+/home/symbiosys/Documents/Korchina/Korchina/.metadata/.plugins/org.eclipse.jdt.core
+1383015064.index
+3099144511.index
+2665203593.index
+2040477148.index

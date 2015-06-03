@@ -1,0 +1,89 @@
+<ion-view view-title="Report"> <ion-content has-bouncing="true">
+<!-- <div class="reportDate">
+<div><span class="rCalander"><img style="width:22px;" src="img/reportV2_07.png"></span><input type="text" ng-change="getReports()" class="rIn" ng-model="reportdata.from" placeholder="From" pick-a-date="date" pick-a-date-options="{ format: 'yyyy-mm-dd' }"></div>
+<div><span class="rCalander"><img style="width:22px;" src="img/reportV2_07.png"></span><input type="text" ng-change="getReports()" class="rIn" ng-model="reportdata.to" placeholder="To" pick-a-date="date" pick-a-date-options="{ format: 'yyyy-mm-dd' }"></div>
+</div> -->
+<div class="reportDate">
+<div><datepicker date-format="yyyy-MM-dd"><input class="rIn" ng-model="reportdata.from" ng-change="getReports()"  type="text" placeholder="From" /><span class="rCalander"><img style="width:22px;" src="img/reportV2_07.png"></span></datepicker></div>
+<div><datepicker date-format="yyyy-MM-dd"><input class="rIn" ng-model="reportdata.to" ng-change="getReports()"  type="text" placeholder="To"/><span class="rCalander"><img style="width:22px;" src="img/reportV2_07.png"></span></datepicker></div>
+</div>
+
+<!-- <input type="text" ng-change="getReports()" ng-model="data.from" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; From" pick-a-date="date" style="background-color:#fff;background-image:url('img/up-arw.png');background-repeat:no-repeat;background-position:left center;">
+	<input type="text" ng-change="getReports()" ng-model="data.to" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; To" pick-a-date="date" style="background-color:#fff;background-image:url('img/up-arw.png');background-repeat:no-repeat;background-position:left center;"> -->
+<div class="list">
+
+	<div class="item item-divider">
+		<h2 style="color: #858585;font-size:18px">{{'Manifest' | translate }}</h2>
+	</div>
+
+	<a class="item" href="#/tab/report/manifestDetail" ng-click="setReportType('MC')">
+		<span class="reportid">{{'Confirmed' | translate}} : {{Manifest_Confirmed_Count}}</span>
+		<span class="reportarwid">
+			<img class="reportarw" ng-src="{{Manifest_Confirmed_Count > 0 && 'img/reportV2_03-03.png' || 'img/reportV2_15.png'}}"/>
+		</span>
+	</a> 
+
+	<a class="item" href="#/tab/report/manifestDetail" ng-click="setReportType('MR')"> 
+		<span class="reportid">{{'Rejected' | translate}} : {{Manifest_Reject_Count}}</span>
+		<span class="reportarwid">
+			<img class="reportarw" ng-src="{{Manifest_Reject_Count > 0 && 'img/reportV2_03-03.png' || 'img/reportV2_15.png'}}"/>
+		</span>
+	</a> 
+
+	<a class="item" href="#/tab/report/manifestDetail" ng-click="setReportType('MT')"> 
+		<span class="reportid">{{'Total' | translate}} : {{Manifest_Total}}</span>
+		<span class="reportarwid">
+			<img class="reportarw" ng-src="{{Manifest_Total > 0 && 'img/reportV2_03-03.png' || 'img/reportV2_15.png'}}"/>
+		</span>
+	</a>
+
+	<div class="item item-divider">
+		<h2 style="color: #858585;">{{'Order' | translate }}</h2>
+	</div>
+
+	<a class="item" href="#/tab/report/detail" ng-click="setReportType('R')"> 
+		<span class="reportid">{{'Orders_Received' | translate}} : {{Received_Order_Count}}</span>
+		<span class="reportarwid">
+			<img class="reportarw" ng-src="{{Received_Order_Count > 0 && 'img/reportV2_03-03.png' || 'img/reportV2_15.png'}}"/>
+		</span>
+	</a> 
+
+	<a class="item" href="#/tab/report/detail" ng-click="setReportType('C')"> 
+		<span class="reportid">{{'Confirmed_Orders' | translate}} : {{Confirmed_Order_Count}}</span>
+		<span class="reportarwid">
+			<img class="reportarw" ng-src="{{Confirmed_Order_Count > 0 && 'img/reportV2_03-03.png' || 'img/reportV2_15.png'}}"/>
+		</span>
+	</a> 
+
+	<a class="item" href="#/tab/report/detail" ng-click="setReportType('PU')"> 
+		<span class="reportid">{{'Picked_Up' | translate}} : {{PickedUp_Order_Count}}</span>
+		<span class="reportarwid">
+			<img class="reportarw" ng-src="{{PickedUp_Order_Count > 0 && 'img/reportV2_03-03.png' || 'img/reportV2_15.png'}}"/>
+		</span>
+	</a>
+
+	 <a class="item" href="#/tab/report/detail" ng-click="setReportType('FH')"> 
+	 	<span class="reportid">{{'Delivery_Finished' | translate}} : {{Finished_Order_Count}}</span>
+	 	<span class="reportarwid">
+	 		<img class="reportarw" ng-src="{{Finished_Order_Count > 0 && 'img/reportV2_03-03.png' || 'img/reportV2_15.png'}}"/>
+	 	</span>
+	</a> 
+
+	<a class="item" href="#/tab/report/detail" ng-click="setReportType('RT')">
+	 	<span class="reportid">{{'Return' | translate}} : {{Return_Order_Count}}</span>
+	 	<span class="reportarwid">
+	 		<img class="reportarw" ng-src="{{Return_Order_Count > 0 && 'img/reportV2_03-03.png' || 'img/reportV2_15.png'}}"/>
+	 	</span>
+	</a>
+
+	<a class="item" href="#/tab/report/detail" ng-click="setReportType('T')"> 
+		<span class="reportid">{{'Total' | translate}} : {{Order_total}}</span>
+		<span class="reportarwid">
+			<img class="reportarw" ng-src="{{Order_total > 0 && 'img/reportV2_03-03.png' || 'img/reportV2_15.png'}}"/>
+		</span>
+	</a>
+	<!-- 	<button class="button button-dark" ng-click="showPopup()">
+		show</button> -->
+<datepicker date-format="yyyy-MM-dd"><input ng-model="date" type="text"/></datepicker>
+</div>
+</ion-content> </ion-view>

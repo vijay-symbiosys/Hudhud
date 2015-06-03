@@ -1,0 +1,25 @@
+<ion-view view-title="Account Settings">
+  <div class="bar bar-header bar-stable">
+  <a class="button b1" ng-click="myGoBack()" style="background:transparent;"><img class="reportar" src="img/reportV2_03.png"></a><h1 class="title" style="color:#646464;">{{'Settings' | translate}}</h1>
+</div>
+  <ion-content class="padding" has-bouncing="true">
+</br></br></br>
+    <div class="list">
+
+  <label class="item item-radio">
+    <input type="radio" name="group" ng-change="setLanguage(value)" ng-model="value" value="en">
+    <div class="item-content">
+      English
+    </div>
+    <i class="radio-icon ion-checkmark"></i>
+  </label>
+<label class="item item-radio">
+    <input type="radio" name="group" ng-change="setLanguage(value)" ng-model="value" value="mc">
+    <div class="item-content">
+      Cantonese
+    </div>
+    <i class="radio-icon ion-checkmark"></i>
+  </label>
+</div>
+  </ion-content>
+</ion-view>

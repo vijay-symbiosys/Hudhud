@@ -1,0 +1,23 @@
+<ion-view view-title="User Information">
+  <div class="bar bar-header bar-stable">
+  <a class="button b1" ng-click="myGoBack()" style="background:transparent;"><img class="reportar" src="img/reportV2_03.png"></a><h1 class="title" style="color:#646464;">User Information</h1>
+</div>
+  <ion-content class="padding" has-bouncing="true">
+</br></br></br>
+<div class="row">
+  <div class="col userAcc"><b style=color:#379EE0 !important;">User Name</b>&nbsp;: {{user.UserName}}</div>
+</div>
+<div class="row">
+  <div class="col userAcc"><b style=color:#379EE0 !important;">Tele</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{user.Tel}}</div>
+</div>
+<div class="row">
+  <div class="col userAcc"><b style=color:#379EE0 !important;">Mobile</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{user.MobileNo}}</div>
+</div>
+<div class="row">
+  <div class="col userAcc"><b style=color:#379EE0 !important;">Email</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{user.Email}}</div>
+</div><br>
+<div class="qrcodeImg">
+<qr text="qrcodeString" type-number="typeNumber" correction-level="correctionLevel" size="size" input-mode="inputMode" image="image"></qr>
+</div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,44 @@
+<a class="button button-icon icon-right icon ion-android-close"
+	style="float: right; top: -10px;" ng-click="close2()"></a>
+<div class="row">
+	<div class="col">
+		<p style="text-align: center;">
+			Reject Reason :<br>
+	</div>
+</div>
+<div class="row">
+	<div class="col">
+		<span style="float: left;"><input type="radio"
+			name="refusename" ng-click="setrefuseType(value)" ng-model="value"
+			value="RF" /></span><span style="float: left; padding-left: 3px;">Refused
+		</span></br>
+	</div>
+</div>
+<div class="row">
+	<div class="col">
+		<span style="float: left;"><input type="radio"
+			name="refusename" ng-click="setrefuseType(value)" ng-model="value"
+			value="UA" /></span> <span style="padding-left: 3px;"> Not Available
+		</span></br>
+	</div>
+</div>
+<div class="row">
+	<div class="col">
+		<span style="float: left;"><input type="radio"
+			name="refusename" ng-click="setrefuseType(value)" ng-model="value"
+			 value="DM" /></span><span
+			style="float: left; padding-left: 3px;"> Damaged </span>
+			<!-- <a href="" class="button button-small button-icon icon ion-camera" style="max-width: 10px; max-height: 10px; margin-left: 6px; margin-top: -6px; border-radius = 10px;" ng-disabled = "value!='DM'" ng-click="captureImage()">  </a> -->
+			<a href="" ng-disabled = "value!='DM'" ng-click="captureImage()"> 
+				<img style="max-width:25px; max-height:25px;" ng-src="{{value != 'DM' && 'img/camera_disabled.png' || 'img/camera_enabled.png'}}"/>
+			</a>
+
+
+	</div>
+</div>
+<div class="row">
+	<div class="col col-center" style="text-align: center;">
+		<a href="" ng-click="submitRefuse()"><img alt=""
+			style="max-width: 25px; max-height: 25px;" src="img/acceptO.png"></a>
+	</div>
+</div>

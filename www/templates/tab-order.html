@@ -1,0 +1,71 @@
+<ion-view view-title="Orders"> <ion-content class="padding my-content" has-bouncing="true">
+
+<div class="card" ng-repeat="mani in item">
+<div class="countdount"><img alt="" style="width:20px;" ng-src="{{mani.cImg}}"></div>
+	<div class="item-divider manifest-details" ng-click="getOrders(mani.ManifestID,$index,mani.WHCode,mani.DistrictCode)"
+		style="background-color: white; padding: 0px;border: 2px solid #d7d7d7;border-radius: 5px;">
+		<div class="row" style="padding-left: 0.7em;">
+		
+			<div class="col col-50">
+				<b>{{mani.ManifestID}}</b>
+			</div>
+			<div class="col col-50" style="font-size: 12px;color:#646464;">| {{mani.ReceivedCount}} / {{mani.TotalCount}} {{'Orders' | translate}}</div>
+		</div>
+		<div class="row"
+			style="background-color: #EEEEEE; padding-left: 1.1em;">
+			<div class="col" style="font-size: 10px;color:#646464;padding:6px;">{{'From' | translate}} {{mani.WAREHOUSE}} {{'To' | translate}} {{mani.DISTRICTNAME}}</div>
+		</div>
+	</div><!--ng-class="{active: isGroupShown(orders)}"  (toggleGroup(orders,orders.OrderNumber,$parent.$index,$index,orders.OrderStatus))-->
+	<div class="item-text-wrap order-details" style="padding: 0px;"  ng-repeat="orders in mani.Orders" ng-show="mani.showDetails">
+		<div class="row" style="padding-left: 0.7em; padding-left: 0.7em;border-bottom:1px solid #eee" ng-click="orders.showDetails = ! orders.showDetails"><div class="imgAr"><img alt="" src="img/up-arw.png"></div>
+			<div class="col orderNum">
+				<b>{{orders.OrderNumber}}</b><br><p style="font-size: 12px;color:#646464;">{{'Address' | translate}} : {{orders.Address}}</p>
+			</div>
+			<div class="col">
+				<a ng-disabled="(orders.OrderStatus != 'PU')" class="button icon-right ion-compose button-stable" style="border-radius: 20px !important;box-shadow: 0 1px 0 #ffffff inset, 0px 1px 5px 0px #cecece, 0 5px 3px #EAEAEA;background-color:#fff;float:right;border-color:#FFFFFF;max-height:43px !important;min-height:35px;font-size:small;" ng-click="hello(orders.Address,orders.ZipCode,orders.CityCode,orders.OrderNumber,mani.ManifestID,$parent.$index)">{{orders.OrderStatus|enumLoC}}</a>
+			</div>
+		</div>
+		<!--  -->
+		<div class="row order-description" style="background-color: #F0F0F0 !important;padding-left: 0.7em;border-top:2px solid #dbdbdb;" ng-show="orders.showDetails">
+			<div class="col"><p style="font-size: 10px; color:#646464;">{{'Name' | translate}}: {{orders.CustomerName}}<br>{{'Tele' | translate}}: {{orders.Telephone}}</p>
+			</div></br>
+			<div class="col"><p style="font-size: 10px; color:#646464;">{{'Totalorder' | translate}}: {{orders.OrderQuantity}}<br>{{'Ware_House' | translate}}: {{mani.WAREHOUSE}}<br>{{'Moneycollection' | translate}}: {{orders.CollectAmount}}</p>
+			</div>
+			
+		</div>
+	</div><!--ng-click="hello(orders.Address,orders.ZipCode,orders.CityCode,orders.OrderNumber,mani.ManifestID,$index)" ng-if="mani.OrderStatus == 'R'" -->
+	<div class="item item-text-wrap order-details"  ng-click="startTimer('poll-server')" ng-init="timerType = mani.ManifestID" ng-controller="PollingController" style="padding: 0px;"  ng-show="mani.showDetails" ng-if="mani.ArrangeStatus == 'I' && mani.timeLeft > 0" >
+		<div class="row countRow" style="" >
+		<!-- <div class="countdount"><img alt="" ng-src="{{countImg}}"></div> -->
+			<div class="col responsive-md">
+				<p style="font-size: 0.7em;" translate="youhavestill">You have still</p>
+			</div>
+			<div class="col">
+				<timer countdown="mani.timeLeft" max-time-unit="'minute'"  finish-callback="callbackTimer.finished()" interval="1000">{{hhours}}:{{mminutes}}:{{sseconds}}
+				<!-- <p id="count{{$index}}">d</p><br> -->
+				<p style="font-size: 12px;" class="responsive-md" translate="con_or_rej">To Confirm or Reject<div ng-show="sseconds == 10" ng-init="changeImg()"></div></p></timer> 
+			</div>
+			<div class="col col-20">
+				<a href="" ng-click="accept('{{mani.ManifestID | escape}}','{{$index}}',mani.WHCode,mani.DistrictCode)"><img alt="" style="max-width:45px;max-height:45px;" src="img/acceptO.png"></a>
+			</div>
+			<div class="col col-20">
+				<a href="" ng-click="reject('{{mani.ManifestID | escape}}','{{$index}}',mani.WHCode,mani.DistrictCode)"><img alt="" style="max-width:45px;max-height:45px;" src="img/rejectO.png"></a>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+</br></br></br><!-- <button ng-click="sendImg()">Send</button> -->
+<!-- <button ng-click="getpic()">pic</button><div ng-show="showDetails">Hello</div>
+<button ng-click=show()>show</button> <button ng-click="sendImg()">Send</button>-->
+<!-- {{getD()}} -->
+
+</ion-content> </ion-view>
+<div class="float-button">
+  <span class="height-fix">
+    <a  class="content" ng-click="scanBarcode()">
+     <img alt="" src="img/scan.png" class="imgSc">
+    </a>
+  </span>
+</div>

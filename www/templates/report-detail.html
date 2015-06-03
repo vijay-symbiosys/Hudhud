@@ -1,0 +1,31 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view view-title="{{'Order' | translate}}">
+  <div class="bar bar-header bar-stable">
+  <a class="button b1" ng-click="myGoBack()" style="background:transparent;"><img class="reportar" src="img/reportV2_03.png"></a><h1 class="title" style="color:#646464;">Orders</h1>
+</div>
+  <ion-content class="" has-bouncing="true">
+<br><br><br>
+    	<div class="item-text-wrap order-details" style="padding: 0px;"  ng-repeat="orders in Orders">
+		<div class="row" style="padding-left: 0.7em;border-bottom:1px solid #eee" ng-click="(showOrderDetails = ! showOrderDetails) && (setOrderId(orders.ORDERNUMBER,$parent.$index,$index,orders.OrderStatus))"><!-- <div class="imgAr"><img alt="" src="img/up-arw.png"></div> -->
+			<div class="col " style="font-size: 12px; color:#646464;" >
+			{{orders.OrderNumber}}
+			</div>
+			<div class="col">
+				<p style="font-size: 12px;color:#646464; float: right; padding-right: 10px;">{{orders.OrderStatus|enumLoC}}</a>
+			</div>
+		</div>
+		<div class="row order-description" style="background-color: #F0F0F0 !important;padding-left: 0.7em;" ng-show="showOrderDetails">
+			<div class="col"><p style="font-size: 10px; color:#646464;">{{'Name' | translate}}: {{orders.CustomerName}}<br>{{'Tele' | translate}}: {{orders.CustTelephone}} </br>{{'Address' | translate}} : {{orders.CustomerAddress}}</p>
+			</div></br>
+			<div class="col"><p style="font-size: 10px; color:#646464;">{{'PickWarehouse' | translate}}: {{orders.PickWarehouse}}<br>{{'Quantity' | translate}}: {{orders.OrderQuantity}}<br>{{'Moneycollection' | translate}}: {{orders.CollectMoney}}</p>
+			</div>
+			
+		</div>
+	</div>
+  </ion-content>
+</ion-view>
